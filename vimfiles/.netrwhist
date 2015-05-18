@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/studio_graph/array.java'
+let g:netrw_dirhist_2='/Users/studio_graph/san.java'
+let g:netrw_dirhist_3='/Users/studio_graph/Route1.java'
+let g:netrw_dirhist_4='/Users/studio_graph/Cprogramming'
