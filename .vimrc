@@ -4,15 +4,10 @@ set tabstop=2
 set cursorline
 set cursorcolumn
 set number
-        set smartindent
-        inoremap <C-a> <Home>
-        inoremap <C-e> <End>
-        inoremap <C-d> <Del>
-
-        inoremap <C-b> <Left>
-        inoremap <C-n> <Down>
-        inoremap <C-f> <Right>
-	inoremap jk <ESC>
+set smartindent
+inoremap jk <ESC>
+"NERDTreeを開いたり閉じたりするためのショートカットキー
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 if has('multi_byte_ime') || has('xim')
     highlight CursorIM guibg=DarkCyan guifg=NONE
@@ -42,9 +37,20 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \     'windows' : 'make -f make_mingw32.mak',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'unix' : 'make -f make_unix.mak',
+  \    },
+  \ }
+
 
 call neobundle#end()
- 
+
 " Required:
 filetype plugin indent on
  
@@ -64,3 +70,7 @@ augroup END
 
 "kkh環境の設定
 au BufNewFile,BufRead *.wl setf c
+
+" 隠しファイルをデフォルトで表示させる
+let NERDTreeShowHidden = 1
+ 
