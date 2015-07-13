@@ -216,7 +216,8 @@ alias gl='git log'
 alias glg='git log --graph --oneline --decorate --all'
 alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
 alias gm='git merge --no-ff'
-alias gp='git pull'
+alias gpl='git pull'
+alias gph='git push'
 alias gss='git status -s'
 alias gst='git stash'
 alias gstl='git stash list'
@@ -234,4 +235,7 @@ alias wol="ruby ~/kkh/wolfram.rb"
 
 #open LINE
 alias line="open /Applications/LINE.app"
+alias cdu="cd ../"
 
+#業務用の設定
+alias kcs="ssh kcsmgr@160.16.62.96"
