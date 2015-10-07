@@ -22,8 +22,8 @@ SAVEHIST=1000000
 # 1行表示
 # PROMPT="%~ %# "
 # 2行表示
-PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
-%# "
+PROMPT="%{${fg[green]}%}[%n@%m]%{${fg[yellow]}%} %~
+%{${reset_color}%}$ "
  
  
 # 単語の区切り文字を指定する
@@ -38,7 +38,7 @@ zstyle ':zle:*' word-style unspecified
 # 補完
 # 補完機能を有効にする
 autoload -Uz compinit
-compinit
+compinit -u
  
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -239,3 +239,11 @@ alias cdu="cd ../"
 
 #業務用の設定
 alias kcs="ssh kcsmgr@160.16.62.96"
+
+# OPAM configuration
+
+. /Users/studio_graph/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# for computer architecture
+
+export PATH=/Users/carch/bin:$PATH
