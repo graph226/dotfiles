@@ -1,9 +1,9 @@
 filetype plugin on
 syntax on
-set tabstop=2
-set shiftwidth=2
-"set cursorline
-"set cursorcolumn
+set tabstop=2		"タブ幅の設定
+set shiftwidth=2 "自動でタブつけるときの設定
+set cursorline "カーソル見つけやすく
+set cursorcolumn "カーソル見つけやすくその2
 set number
 set smartindent
 inoremap jk <ESC>

@@ -129,6 +129,7 @@ alias ll='ls -l'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias vi='vim'
  
 alias mkdir='mkdir -p'
 alias db='cd Dropbox/' 
