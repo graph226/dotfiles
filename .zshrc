@@ -248,3 +248,4 @@ alias kcs="ssh kcsmgr@160.16.62.96"
 # for computer architecture
 
 export PATH=/Users/carch/bin:$PATH
+alias simmips="../SimMips-0.5.5/SimMips -M ../SimMips-0.5.5/test/mem_mieru.txt"
