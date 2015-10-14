@@ -17,6 +17,11 @@ if has('multi_byte_ime') || has('xim')
     highlight CursorIM guibg=DarkCyan guifg=NONE
 endif
 
+" Insertモードのときカーソルの形状を変更
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+inoremap <Esc> <Esc>
+
 
 "カラースキームの設定
 colorscheme desert
