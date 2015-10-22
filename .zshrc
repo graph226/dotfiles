@@ -241,6 +241,9 @@ alias cdu="cd ../"
 #業務用の設定
 alias kcs="ssh kcsmgr@160.16.62.96"
 
+#インターンサーバ設定
+alias leve="ssh kuwako@153.122.0.118 -p 35002"
+
 # OPAM configuration
 
 . /Users/studio_graph/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -249,3 +252,9 @@ alias kcs="ssh kcsmgr@160.16.62.96"
 
 export PATH=/Users/carch/bin:$PATH
 alias simmips="../SimMips-0.5.5/SimMips -M ../SimMips-0.5.5/test/mem_mieru.txt"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+#setting for ocaml
+alias ocaml="rlwrap ocaml"
