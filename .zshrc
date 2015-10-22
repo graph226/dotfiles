@@ -126,6 +126,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 alias la='ls -a'
 alias ll='ls -l'
 alias lls='ll -S'
+alias llt='ll -t'
  
 alias rm='rm -i'
 alias cp='cp -i'
