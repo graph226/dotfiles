@@ -264,11 +264,21 @@ alias ocaml="rlwrap ocaml"
 #=============================
 ## source auto-fu.zsh
 ##=============================
-if [ -f ~/.zsh/auto-fu.zsh ]; then
-source ~/.zsh/auto-fu.zsh
-function zle-line-init () {
-        auto-fu-init
-       }
-       zle -N zle-line-init
-       zstyle ':completion:*' completer _oldlist _complete
-fi
+#if [ -f ~/.zsh/auto-fu.zsh ]; then
+#source ~/.zsh/auto-fu.zsh
+#function zle-line-init () {
+#        auto-fu-init
+#       }
+#       zle -N zle-line-init
+#       zstyle ':completion:*' completer _oldlist _complete
+#fi
+source ~/.zsh-autosuggestions/autosuggestions.zsh
+# Enable autosuggestions automatically
+zle-line-init() {
+zle autosuggest-start
+}
+zle -N zle-line-init
+# use ctrl+t to toggle autosuggestions(hopefully this wont be needed)
+#bindkey '^T' autosuggest-toggle
+# use ctrl+f to accept a suggested word
+#bindkey '^F' autosuggest-execute-suggenstion
