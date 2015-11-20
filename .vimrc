@@ -8,6 +8,7 @@ set cursorline "カーソル見つけやすく
 set cursorcolumn "カーソル見つけやすくその2
 set number
 set smartindent
+set nocompatible "vi互換モードを消す
 inoremap jk <ESC>
 "NERDTreeを開いたり閉じたりするためのショートカットキー
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
@@ -57,6 +58,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'derekwyatt/vim-scala'
 "NeoBundle 'Shougo/vimproc', {
 "  \ 'build' : {
 "  \     'windows' : 'make -f make_mingw32.mak',
