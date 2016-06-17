@@ -245,6 +245,7 @@ alias kcs="ssh kcsmgr@160.16.62.96"
 
 #インターンサーバ設定
 alias leve="ssh kuwako@153.122.0.118 -p 35002"
+alias voya="ssh demouser@153.120.171.73"
 
 # OPAM configuration
 
@@ -282,3 +283,15 @@ zle -N zle-line-init
 #bindkey '^T' autosuggest-toggle
 # use ctrl+f to accept a suggested word
 #bindkey '^F' autosuggest-execute-suggenstion
+#
+#setting for noti
+export NOTI_PB=o.smLNBRxbHJz9qh6JuVii6M5m6DczQYmD
+eval "$(rbenv init -)"
+
+# for postgresSQL
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+
+# for rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
+eval "$(rbenv init -)"
