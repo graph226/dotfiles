@@ -3,6 +3,9 @@ syntax on
 "setting for vim/airline
 set laststatus=2
 set tabstop=2		"タブ幅の設定
+set softtabstop=2
+set expandtab
+set smarttab
 set shiftwidth=2 "自動でタブつけるときの設定
 set cursorline "カーソル見つけやすく
 set cursorcolumn "カーソル見つけやすくその2
@@ -59,6 +62,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 "NeoBundle 'Shougo/vimproc', {
 "  \ 'build' : {
 "  \     'windows' : 'make -f make_mingw32.mak',
@@ -129,3 +133,11 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
+"indent guide
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size = 1
