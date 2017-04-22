@@ -1,20 +1,25 @@
+# 環境変数
 export LANG=ja_JP.UTF-8
+
+if [[ -f ~/.zsh/antigen/antigen.zsh ]]; then
+  source ~/.zsh/antigen/antigen.zsh
+  antigen use oh-my-zsh
+  antigen theme bira
+  antigen apply
+fi
 
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
 export LSCOLORS=exfxcxdxbxegedabagacad
- 
+
+# emacs 風キーバインドにする
+bindkey -e
+
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
-
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -42,21 +47,6 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
-
-########################################
-# vcs_info
-
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="%1(v|%F{green}%1v%f|)"
-
 
 ########################################
 # オプション
@@ -107,14 +97,12 @@ setopt extended_glob
 ########################################
 # キーバインド
 
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^R' history-incremental-pattern-search-backward
-
 ########################################
 # エイリアス
 
 alias la='ls -a'
 alias ll='ls -l'
+alias lp='ls -l peco'
 alias lls='ll -S'
 alias llt='ll -t'
 
@@ -122,6 +110,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias vi='vim'
+alias あとｍ='atom'
 
 alias mkdir='mkdir -p'
 alias db='cd Dropbox/'
@@ -164,11 +153,31 @@ esac
 # vim:set ft=zsh:
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+#vimをタブで開くようにする
+alias mvi="mvim --remote-tab-silent"
+
 #
 # Goolge Search by Google Chrome
 #
+ggl() {
+    local str opt
+    if [ $# != 0 ]; then
+        for i in $*; do
+            # $strが空じゃない場合、検索ワードを+記号でつなぐ(and検索)
+            str="$str${str:++}$i"
+        done
+        opt='search?num=100'
+        opt="${opt}&q=${str}"
+    fi
+    open http://www.google.co.jp/$opt
+}
+
+
+#現在のディレクトリをFinderで開くための設定
+
 alias oph='open ./'
 
+#Git関連
 # ----------------------
 # Git Aliases
 # ----------------------
@@ -209,6 +218,9 @@ alias wol="ruby ~/kkh/wolfram.rb"
 #open LINE
 alias cdu="cd ../"
 
+#業務用の設定
+alias kcs="ssh kcsmgr@160.16.62.96"
+
 # OPAM configuration
 
 . /Users/studio_graph/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -244,12 +256,35 @@ zle -N zle-line-init
 #bindkey '^F' autosuggest-execute-suggenstion
 #
 #setting for noti
-export NOTI_PB=o.smLNBRxbHJz9qh6JuVii6M5m6DczQYmD
 
 # for postgresSQL
-export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # for rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
-export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
+export PATH=$HOME/.rbenv/shims:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export LC_ALL='ja_JP.UTF-8'
+
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+export PATH="/Library/TeX/texbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/studio_graph/miniconda3/bin:$PATH"
+
+alias pf='ssh -fN -L8888:localhost:8888 share2'
